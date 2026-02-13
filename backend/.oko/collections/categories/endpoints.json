@@ -1,0 +1,29 @@
+{
+  "endpoints": {
+    "CreateCategory": {
+      "url": "{{base_url}}/categories",
+      "method": "POST",
+      "created_at": "2026-02-11T15:22:20.162567"
+    },
+    "FindAll": {
+      "url": "{{base_url}}/categories",
+      "method": "GET",
+      "created_at": "2026-02-12T13:21:13.202778"
+    },
+    "FindById": {
+      "url": "{{base_url}}/categories/{{id}}",
+      "method": "GET",
+      "created_at": "2026-02-12T13:29:55.479729"
+    },
+    "Update": {
+      "url": "{{base_url}}/categories/{{id}}",
+      "method": "PATCH",
+      "created_at": "2026-02-12T19:37:11.355721"
+    },
+    "Delete": {
+      "url": "{{base_url}}/categories/{{id}}",
+      "method": "DELETE",
+      "created_at": "2026-02-12T19:49:47.852479"
+    }
+  }
+}
