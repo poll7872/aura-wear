@@ -23,6 +23,9 @@ export class Product {
   @Column({ type: 'int' })
   inventory: number;
 
+  @Column({ type: 'int' })
+  categoryId: number;
+
   @ManyToOne(() => Category)
   category: Category;
 }
