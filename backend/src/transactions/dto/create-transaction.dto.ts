@@ -25,9 +25,9 @@ export class TransactionContentsDto {
 }
 
 export class CreateTransactionDto {
-  @IsNotEmpty({ message: 'El Total no puede ir vacio' })
+  @IsOptional()
   @IsNumber({}, { message: 'Cantidad no válida' })
-  total: number;
+  total?: number;
 
   @IsArray()
   @ArrayNotEmpty({ message: 'Los Contenidos no pueden ir vacios' })
