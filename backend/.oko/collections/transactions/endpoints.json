@@ -4,6 +4,26 @@
       "url": "{{base_url}}/transactions",
       "method": "POST",
       "created_at": "2026-02-16T18:15:15.723098"
+    },
+    "FindAll": {
+      "url": "{{base_url}}/transactions",
+      "method": "GET",
+      "created_at": "2026-02-17T12:36:03.888625"
+    },
+    "FindAllByDate": {
+      "url": "{{base_url}}/transactions?transactionDate={{transactionDate}}",
+      "method": "GET",
+      "created_at": "2026-02-17T13:07:11.831894"
+    },
+    "FindById": {
+      "url": "{{base_url}}/transactions/{{id}}",
+      "method": "GET",
+      "created_at": "2026-02-17T14:58:49.491080"
+    },
+    "Delete": {
+      "url": "{{base_url}}/transactions/{{id}}",
+      "method": "DELETE",
+      "created_at": "2026-02-17T15:14:20.572280"
     }
   }
 }
