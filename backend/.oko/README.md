@@ -1,10 +1,10 @@
 # backend API Docs
 
 > Archivo generado automáticamente por OKO.
-> Actualizado: 2026-02-17T15:14:20
+> Actualizado: 2026-02-18T20:27:06
 
 - **Base URL:** `http://localhost:3000`
-- **Colecciones:** `3`
+- **Colecciones:** `4`
 
 ## Variables Globales
 
@@ -21,6 +21,17 @@
 | `FindAll` | `GET` | `{{base_url}}/categories` | `base_url` |
 | `FindById` | `GET` | `{{base_url}}/categories/{{id}}` | `base_url`, `id` |
 | `Update` | `PATCH` | `{{base_url}}/categories/{{id}}` | `base_url`, `id` |
+
+### coupons
+
+| Alias | Method | URL | Variables |
+|---|---|---|---|
+| `ApplyCoupon` | `POST` | `{{base_url}}/coupons/apply-coupon` | `base_url` |
+| `Create` | `POST` | `{{base_url}}/coupons` | `base_url` |
+| `Delete` | `DELETE` | `{{base_url}}/coupons/{{id}}` | `base_url`, `id` |
+| `FindAll` | `GET` | `{{base_url}}/coupons` | `base_url` |
+| `FindById` | `GET` | `{{base_url}}/coupons/{{id}}` | `base_url`, `id` |
+| `Update` | `PUT` | `{{base_url}}/coupons/{{id}}` | `base_url`, `id` |
 
 ### products
 

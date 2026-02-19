@@ -76,6 +76,25 @@
         "11",
         "12"
       ]
+    },
+    "coupons::FindById": {
+      "id": [
+        "1",
+        "10",
+        "2",
+        "hola"
+      ]
+    },
+    "coupons::Update": {
+      "id": [
+        "1"
+      ]
+    },
+    "coupons::Delete": {
+      "id": [
+        "1",
+        "20"
+      ]
     }
   }
 }
