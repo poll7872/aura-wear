@@ -1,14 +1,14 @@
 # backend API Docs
 
 > Archivo generado automáticamente por OKO.
-> Actualizado: 2026-02-18T20:27:06
+> Actualizado: 2026-02-19T15:09:05
 
-- **Base URL:** `http://localhost:3000`
+- **Base URL:** `http://localhost:3001`
 - **Colecciones:** `4`
 
 ## Variables Globales
 
-- `base_url` = `http://localhost:3000`
+- `base_url` = `http://localhost:3001`
 
 ## Colecciones y Endpoints
 
@@ -20,6 +20,7 @@
 | `Delete` | `DELETE` | `{{base_url}}/categories/{{id}}` | `base_url`, `id` |
 | `FindAll` | `GET` | `{{base_url}}/categories` | `base_url` |
 | `FindById` | `GET` | `{{base_url}}/categories/{{id}}` | `base_url`, `id` |
+| `GetCategoriesAndProducts` | `GET` | `{{base_url}}/categories/{{id}}?products={{bool}}` | `base_url`, `id`, `bool` |
 | `Update` | `PATCH` | `{{base_url}}/categories/{{id}}` | `base_url`, `id` |
 
 ### coupons

@@ -5,7 +5,7 @@
   "root_path": "/mnt/DATA/Developer/aura-wear/backend/.oko",
   "created_at": "2026-02-14T14:58:09.457050",
   "variables": {
-    "base_url": "http://localhost:3000"
+    "base_url": "http://localhost:3001"
   },
   "runtime_history": {
     "products::FindCategorieTakeAndSkip": {
@@ -94,6 +94,20 @@
       "id": [
         "1",
         "20"
+      ]
+    },
+    "categories::FindById": {
+      "id": [
+        "3",
+        "2"
+      ]
+    },
+    "categories::GetCategoriesAndProducts": {
+      "id": [
+        "3"
+      ],
+      "bool": [
+        "true"
       ]
     }
   }
