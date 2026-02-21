@@ -1,6 +1,7 @@
 import { Product } from "@/src/schemas";
 import { formatCurrency } from "@/src/utils";
 import Image from "next/image";
+import { AddProductButton } from "./AddProductButton";
 
 export const ProductCard = ({ product }: { product: Product }) => {
   return (
@@ -11,6 +12,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
           alt={`Imagen del producto ${product.name}`}
           width={400}
           height={600}
+          loading="eager"
           unoptimized
         />
         <div className="p-3 space-y-2">
@@ -21,22 +23,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
           </p>
         </div>
       </div>
-      <button type="button" className="absolute top-5 -right-3">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="w-8 h-8 bg-indigo-600 rounded-full text-white"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      </button>
+      <AddProductButton product={product} />
     </div>
   );
 };
