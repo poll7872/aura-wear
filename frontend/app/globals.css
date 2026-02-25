@@ -1,1 +1,68 @@
 @import "tailwindcss";
+
+@theme {
+  /* OKLCH Color Palette for Aura Wear */
+  --color-background: oklch(14% 0.022 265); /* Deep, dark blue */
+  --color-foreground: oklch(98% 0.01 90);  /* Warm off-white */
+
+  --color-primary: oklch(65% 0.2 280); /* Vibrant violet */
+  --color-primary-foreground: oklch(100% 0 0); /* Pure white */
+
+  --color-secondary: oklch(20% 0.015 265); /* Dark subtle gray-blue */
+  --color-secondary-foreground: oklch(98% 0.01 90);
+
+  --color-muted: oklch(25% 0.015 265);
+  --color-muted-foreground: oklch(65% 0.015 265); /* Muted gray-blue text */
+
+  --color-border: oklch(25% 0.015 265);
+  --color-ring: oklch(65% 0.2 280 / 0.6); /* Violet ring for focus */
+
+  --color-destructive: oklch(60% 0.22 25); /* Red for destructive actions */
+  --color-destructive-foreground: oklch(98% 0.01 25);
+  --color-constructive: oklch(65% 0.18 145); /* Green for constructive actions */
+  --color-constructive-foreground: oklch(15% 0.05 145);
+  
+  --color-card: oklch(16% 0.02 265);
+  --color-card-foreground: oklch(98% 0.01 90);
+
+  /* Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  /* Animation */
+  --animate-aura-glow: aura-glow 3s infinite ease-in-out;
+
+  @keyframes aura-glow {
+    0%, 100% {
+      text-shadow: 0 0 2px theme(colors.primary / 50%), 0 0 10px theme(colors.primary / 30%);
+    }
+    50% {
+      text-shadow: 0 0 5px theme(colors.primary / 70%), 0 0 25px theme(colors.primary / 50%);
+    }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image: radial-gradient(circle at top, oklch(100% 0 0 / 2.5%), transparent 40%);
+  }
+  
+  * {
+    @apply border-border;
+  }
+}
+
+/* Redefining old variables to map to the new system for compatibility */
+/* This ensures existing components don't break before they are redesigned */
+:root {
+  --aw-bg-deep: theme(colors.background);
+  --aw-bg-mid: theme(colors.secondary);
+  --aw-surface: theme(colors.card);
+  --aw-text-light: theme(colors.foreground);
+  --aw-text-dark: theme(colors.card-foreground);
+  --aw-muted: theme(colors.muted);
+  --aw-accent: theme(colors.primary);
+  --aw-accent-soft: oklch(75% 0.18 280); /* Softer violet for hover effects */
+}
