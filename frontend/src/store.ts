@@ -7,6 +7,9 @@ interface Store {
   discount: number;
   contents: ShoppingCart;
   coupon: Coupon;
+  isCartOpen: boolean;
+  openCart: () => void;
+  closeCart: () => void;
   addToCart: (product: Product) => void;
   updateQuantity: (id: Product["id"], quantity: number) => void;
   removeFromCart: (id: Product["id"]) => void;
@@ -25,11 +28,22 @@ const initialState = {
     name: "",
     message: "",
   },
+  isCartOpen: false,
 };
 
 export const useStore = create<Store>()(
   devtools((set, get) => ({
     ...initialState,
+    openCart: () => {
+      set(() => ({
+        isCartOpen: true,
+      }));
+    },
+    closeCart: () => {
+      set(() => ({
+        isCartOpen: false,
+      }));
+    },
     addToCart: (product) => {
       const { id: productId, categoryId, ...data } = product;
       let contents: ShoppingCart = [];
@@ -68,6 +82,7 @@ export const useStore = create<Store>()(
       }));
 
       get().calculateTotal();
+      get().openCart();
     },
 
     updateQuantity: (id, quantity) => {
@@ -143,6 +158,7 @@ export const useStore = create<Store>()(
     },
 
     clearOrder: () => {
+      get().closeCart();
       set(() => ({
         ...initialState,
       }));
