@@ -16,24 +16,29 @@ export const CouponForm = () => {
 
   return (
     <>
-      <p className="py-5 font-bold border-t border-gray-300">Canjear Cupón</p>
+      <p className="py-4 font-bold border-t border-border text-foreground">
+        Canjear Cupón
+      </p>
       <form className="flex" onSubmit={handleSubmit}>
         <input
           type="text"
-          className="p-2 bg-gray-200 border-gray-300 w-full"
+          className="p-2 bg-secondary border border-border w-full rounded-l-md focus:outline-none focus:ring-2 focus:ring-ring"
           placeholder="Ingresa un cupón"
           name="coupon_name"
         />
         <input
           type="submit"
-          className="p-3 bg-green-400 font-bold hover:cursor-pointer"
+          className="p-3 bg-primary text-primary-foreground font-bold hover:bg-primary/90 cursor-pointer rounded-r-md"
           value="Canjear"
         />
       </form>
 
       {coupon.message ? (
-        <p className="py-4 text-center text-sm font-bold">{coupon.message}</p>
+        <p className="py-4 text-center text-sm font-bold text-muted-foreground">
+          {coupon.message}
+        </p>
       ) : null}
     </>
   );
 };
+
