@@ -1,5 +1,7 @@
-import { ShoppingCart } from "@/components/cart/ShoppingCart";
 import { MainNav } from "@/components/ui/MainNav";
+import { ToastNotification } from "@/components/ui/ToastNotification";
+import { CartManager } from "@/components/cart/CartManager";
+import { Footer } from "@/components/ui/Footer";
 
 export default function StoreLayout({
   children,
@@ -7,16 +9,16 @@ export default function StoreLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <div className="flex flex-col h-screen">
       <MainNav />
-      <main className="lg:flex  lg:h-screen lg:overflow-y-hidden">
-        <div className="md:flex-1 md:h-screen md:overflow-y-scroll pt-10  pb-32 px-10">
+      <main className="flex-grow overflow-y-auto">
+        <div className="pt-10 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           {children}
         </div>
-        <aside className="md:w-96 md:h-screen md:overflow-y-scroll pt-10 pb-32 px-5 bg-white">
-          <ShoppingCart />
-        </aside>
+        <Footer />
       </main>
-    </>
+      <CartManager />
+      <ToastNotification />
+    </div>
   );
 }
