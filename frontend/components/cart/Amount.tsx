@@ -9,10 +9,12 @@ type AmountProps = {
 export const Amount = ({ label, amount, discount }: AmountProps) => {
   return (
     <div
-      className={`${discount && "bg-green-300 text-green-900"} flex justify-between p-1`}
+      className={`flex justify-between p-2 rounded-md ${
+        discount ? "bg-constructive/20 text-constructive" : ""
+      }`}
     >
       <dt className="font-bold">{label}</dt>
-      <dd className="text-gray-900">
+      <dd className="font-semibold text-foreground">
         {discount && "-"}
         {formatCurrency(amount)}
       </dd>
