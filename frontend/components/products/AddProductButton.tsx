@@ -9,7 +9,7 @@ export const AddProductButton = ({ product }: { product: Product }) => {
   return (
     <button
       type="button"
-      className="absolute top-5 -right-3"
+      className="transform rounded-full bg-primary p-3 text-primary-foreground transition-all duration-300 scale-90 group-hover:scale-100 hover:!scale-110"
       onClick={() => addToCart(product)}
     >
       <svg
@@ -18,12 +18,12 @@ export const AddProductButton = ({ product }: { product: Product }) => {
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className="w-8 h-8 bg-indigo-600 rounded-full text-white"
+        className="h-7 w-7"
       >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+          d="M12 4.5v15m7.5-7.5h-15"
         />
       </svg>
     </button>
