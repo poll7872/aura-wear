@@ -48,6 +48,12 @@ export const MainNav = async () => {
                 </span>
               </li>
             )}
+            <Link
+              href={"/admin/sales"}
+              className="rounded bg-primary font-bold py-2 px-10"
+            >
+              Panel de administración
+            </Link>
           </ul>
         </nav>
       </div>
