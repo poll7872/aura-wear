@@ -1,5 +1,5 @@
 import { Transaction } from "@/src/schemas";
-import { formatCurrency } from "@/src/utils";
+import { formatCurrency, getImagePath } from "@/src/utils";
 import Image from "next/image";
 
 export default function TransactionSummary({
@@ -9,32 +9,37 @@ export default function TransactionSummary({
 }) {
   return (
     <>
-      <div className="mb-6  text-sm font-medium text-gray-500 border border-gray-200">
-        <p className="text-sm font-black text-gray-900 p-2 bg-gray-200 ">
+      <div className="mb-6 rounded-2xl border border-border/70 bg-card text-sm font-medium text-muted-foreground shadow-[0_12px_30px_hsl(var(--foreground)/0.1)]">
+        <p className="rounded-t-2xl border-b border-border/70 bg-muted/35 p-3 text-xs font-black uppercase tracking-[0.12em] text-foreground">
           ID:{transaction.id}
         </p>
         <ul
           role="list"
-          className="divide-y divide-gray-200 border-t border-gray-200 border-b"
+          className="divide-y divide-border/70 border-b border-border/70"
         >
           {transaction.contents.map((item) => (
-            <li key={item.id} className="p-5 ">
-              <div className="flex items-center space-x-6 ">
-                <div className="relative w-32 h-32">
+            <li
+              key={item.id}
+              className="p-4 transition-colors duration-200 hover:bg-muted/20 sm:p-5"
+            >
+              <div className="flex items-center space-x-4 sm:space-x-6">
+                <div className="relative h-24 w-24 overflow-hidden rounded-xl border border-border/70 bg-muted/25 shadow-sm sm:h-28 sm:w-28">
                   <Image
-                    src={`${process.env.NEXT_PUBLIC_API_URL}/img/${item.product.image}`}
+                    src={getImagePath(item.product.image)}
                     alt={`Imagen del producto ${item.product.name}`}
-                    className="absolute"
+                    className="absolute object-cover"
                     fill
                     unoptimized
                   />
                 </div>
-                <div className="flex-auto space-y-1 ">
-                  <h3 className="text-gray-900">{item.product.name}</h3>
-                  <p className="text-lg font-extrabold  text-gray-900">
+                <div className="flex-auto space-y-1">
+                  <h3 className="text-base font-bold text-foreground">
+                    {item.product.name}
+                  </h3>
+                  <p className="text-lg font-black text-foreground">
                     {formatCurrency(+item.price)}
                   </p>
-                  <p className="text-lg  text-gray-900">
+                  <p className="text-sm font-semibold text-muted-foreground">
                     Cantidad: {item.quantity}
                   </p>
                 </div>
@@ -43,26 +48,28 @@ export default function TransactionSummary({
           ))}
         </ul>
 
-        <dl className="space-y-6  text-sm font-medium text-gray-500 p-5">
+        <dl className="space-y-4 p-5 text-sm font-medium text-muted-foreground">
           {transaction.coupon && (
             <>
               <div className="flex justify-between">
                 <dt>Cupón Utilizado</dt>
-                <dd className="text-gray-900">{transaction.coupon}</dd>
+                <dd className="font-semibold text-foreground">
+                  {transaction.coupon}
+                </dd>
               </div>
 
               <div className="flex justify-between">
                 <dt>Descuento</dt>
-                <dd className="text-gray-900">
+                <dd className="font-bold text-constructive">
                   - {formatCurrency(+transaction.discount!)}
                 </dd>
               </div>
             </>
           )}
 
-          <div className="flex justify-between">
-            <dt className="text-lg text-black font-black">Total</dt>
-            <dd className="text-lg text-black font-black">
+          <div className="flex items-center justify-between rounded-lg border border-border/70 bg-muted/25 px-3 py-2.5">
+            <dt className="text-base font-black text-foreground">Total</dt>
+            <dd className="text-lg font-black text-primary">
               {formatCurrency(+transaction.total)}
             </dd>
           </div>
