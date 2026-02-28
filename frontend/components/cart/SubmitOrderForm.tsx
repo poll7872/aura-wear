@@ -34,7 +34,7 @@ export const SubmitOrderForm = () => {
     <form action={dispatch}>
       <input
         type="submit"
-        className="mt-5 w-full bg-primary hover:bg-primary/90 text-primary-foreground uppercase font-bold p-3 cursor-pointer rounded-md"
+        className="mt-5 w-full cursor-pointer rounded-xl border border-primary/35 bg-primary p-3 text-sm font-black uppercase tracking-[0.12em] text-primary-foreground shadow-[0_10px_24px_hsl(var(--primary)/0.35)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-[0_14px_30px_hsl(var(--primary)/0.42)]"
         value="Confirmar Compra"
       />
     </form>
