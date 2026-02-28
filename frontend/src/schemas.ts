@@ -92,10 +92,11 @@ export const ProductFormSchema = z.object({
     .min(1, { error: "El Nombre del Producto no puede ir vacio" }),
   price: z.coerce
     .number({ error: "Precio no válido" })
-    .min(1, { message: "El Precio debe ser mayor a 0" }),
+    .min(1, { error: "El Precio debe ser mayor a 0" }),
+  image: z.string({ error: "La imagen es obligatoria" }),
   inventory: z.coerce
     .number({ error: "Inventario no válido" })
-    .min(1, { message: "El inventario debe ser mayor a 0" }),
+    .min(1, { error: "El inventario debe ser mayor a 0" }),
   categoryId: z.coerce.number({ error: "La Categoria no es válida" }),
 });
 
