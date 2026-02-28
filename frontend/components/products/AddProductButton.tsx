@@ -9,7 +9,7 @@ export const AddProductButton = ({ product }: { product: Product }) => {
   return (
     <button
       type="button"
-      className="transform rounded-full bg-primary p-3 text-primary-foreground transition-all duration-300 scale-90 group-hover:scale-100 hover:!scale-110"
+      className="scale-90 transform rounded-full border border-primary/40 bg-primary p-3 text-primary-foreground shadow-[0_10px_24px_hsl(var(--primary)/0.35)] transition-all duration-200 group-hover:scale-100 hover:!scale-110 hover:bg-primary/90"
       onClick={() => addToCart(product)}
     >
       <svg
