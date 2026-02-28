@@ -20,7 +20,7 @@ export const DeleteProductForm = ({
     <form action={handleDeleteProduct}>
       <input
         type="submit"
-        className="text-red-600 hover:text-red-800 cursor-pointer"
+        className="cursor-pointer rounded-full border border-destructive/30 bg-destructive/10 px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-destructive transition-all duration-200 hover:-translate-y-0.5 hover:bg-destructive/20"
         value="Eliminar"
       />
     </form>
