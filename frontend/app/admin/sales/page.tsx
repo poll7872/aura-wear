@@ -21,7 +21,7 @@ export default async function SalesPage() {
   return (
     <>
       <Heading>Ventas</Heading>
-      <p className="text-lg">
+      <p className="mb-6 rounded-xl border border-border/70 bg-muted/25 px-4 py-3 text-base font-medium text-muted-foreground">
         En está sección aparecerán las ventas, utiliza el calendario para
         filtrar por fecha
       </p>
