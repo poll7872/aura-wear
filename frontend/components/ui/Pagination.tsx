@@ -11,33 +11,35 @@ export const Pagination = ({ page, totalPages, baseUrl }: PaginationProps) => {
 
   return (
     <nav className="flex justify-center py-10">
-      {page > 1 && (
-        <Link
-          href={`${baseUrl}?page=${page - 1}`}
-          className="text-white px-4 py-2 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0"
-        >
-          &laquo;
-        </Link>
-      )}
+      <div className="inline-flex items-center overflow-hidden rounded-xl border border-border/70 bg-card shadow-[0_10px_24px_hsl(var(--foreground)/0.08)]">
+        {page > 1 && (
+          <Link
+            href={`${baseUrl}?page=${page - 1}`}
+            className="px-4 py-2.5 text-sm font-bold text-foreground transition-colors hover:bg-muted focus:z-20 focus:outline-none"
+          >
+            &laquo;
+          </Link>
+        )}
 
-      {pages.map((currentPage) => (
-        <Link
-          key={currentPage}
-          className={`${page === currentPage && "font-black"} text-white px-4 py-2 text-sm  ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0`}
-          href={`${baseUrl}?page=${currentPage}`}
-        >
-          {currentPage}
-        </Link>
-      ))}
+        {pages.map((currentPage) => (
+          <Link
+            key={currentPage}
+            className={`${page === currentPage ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted"} px-4 py-2.5 text-sm font-semibold transition-colors focus:z-20 focus:outline-none`}
+            href={`${baseUrl}?page=${currentPage}`}
+          >
+            {currentPage}
+          </Link>
+        ))}
 
-      {page < totalPages && (
-        <Link
-          href={`${baseUrl}?page=${page + 1}`}
-          className="text-white px-4 py-2 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0"
-        >
-          &raquo;
-        </Link>
-      )}
+        {page < totalPages && (
+          <Link
+            href={`${baseUrl}?page=${page + 1}`}
+            className="px-4 py-2.5 text-sm font-bold text-foreground transition-colors hover:bg-muted focus:z-20 focus:outline-none"
+          >
+            &raquo;
+          </Link>
+        )}
+      </div>
     </nav>
   );
 };
