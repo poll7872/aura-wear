@@ -1,6 +1,6 @@
 import { CartItem } from "@/src/schemas";
 import { useStore } from "@/src/store";
-import { formatCurrency } from "@/src/utils";
+import { formatCurrency, getImagePath } from "@/src/utils";
 import Image from "next/image";
 
 export const ShoppingCartItem = ({ item }: { item: CartItem }) => {
@@ -8,10 +8,10 @@ export const ShoppingCartItem = ({ item }: { item: CartItem }) => {
   const removeFromCart = useStore((state) => state.removeFromCart);
 
   return (
-    <li className="flex items-center space-x-6 py-6 relative">
-      <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-border">
+    <li className="relative flex items-center space-x-4 px-3 py-4 transition-colors duration-200 hover:bg-muted/20">
+      <div className="h-24 w-24 shrink-0 overflow-hidden rounded-xl border border-border/70 bg-muted/30 shadow-[0_8px_20px_hsl(var(--foreground)/0.08)]">
         <Image
-          src={`${process.env.NEXT_PUBLIC_API_URL}/img/${item.image}`}
+          src={getImagePath(item.image)}
           alt={`Imagen del producto ${item.name}`}
           width={100}
           height={100}
@@ -20,11 +20,13 @@ export const ShoppingCartItem = ({ item }: { item: CartItem }) => {
           unoptimized
         />
       </div>
-      <div className="flex-auto space-y-2">
-        <h3 className="text-foreground font-semibold">{item.name}</h3>
-        <p className="text-muted-foreground">{formatCurrency(item.price)}</p>
+      <div className="flex-auto space-y-2 pr-10">
+        <h3 className="text-base font-semibold text-foreground">{item.name}</h3>
+        <p className="text-sm font-medium text-muted-foreground">
+          {formatCurrency(item.price)}
+        </p>
         <select
-          className="w-24 text-center p-2 rounded-md bg-secondary border border-border focus:outline-none focus:ring-2 focus:ring-ring"
+          className="w-24 rounded-lg border border-border/70 bg-secondary px-2 py-2 text-center text-sm font-semibold text-foreground shadow-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-ring"
           value={item.quantity}
           onChange={(e) => updateQuantity(item.productId, +e.target.value)}
         >
@@ -41,7 +43,7 @@ export const ShoppingCartItem = ({ item }: { item: CartItem }) => {
         <button
           type="button"
           onClick={() => removeFromCart(item.productId)}
-          className="rounded-full p-1 text-destructive/70 transition-colors hover:bg-destructive/10 hover:text-destructive"
+          className="rounded-full border border-transparent p-1 text-destructive/70 transition-all duration-200 hover:border-destructive/30 hover:bg-destructive/10 hover:text-destructive"
         >
           <span className="sr-only">Remove item</span>
           <svg
