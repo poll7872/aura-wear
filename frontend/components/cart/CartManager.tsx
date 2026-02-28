@@ -12,18 +12,18 @@ export const CartManager = () => {
       {/* Cart Overlay */}
       {isCartOpen && (
         <div
-          className="fixed inset-0 bg-black/60 z-40"
+          className="fixed inset-0 z-40 bg-black/55 backdrop-blur-[2px] transition-opacity duration-200"
           onClick={closeCart}
         ></div>
       )}
 
       {/* Shopping Cart */}
       <aside
-        className={`fixed top-0 right-0 z-50 h-screen w-full transform transition-transform duration-300 ease-in-out md:w-96 p-5 bg-card ${
+        className={`fixed right-0 top-0 z-50 h-screen w-full transform border-l border-border/70 bg-card/95 p-5 shadow-[-12px_0_40px_hsl(var(--foreground)/0.2)] backdrop-blur-md transition-transform duration-300 ease-in-out md:w-[26rem] ${
           isCartOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="h-full overflow-y-auto">
+        <div className="h-full overflow-y-auto rounded-2xl border border-border/50 bg-background/85 p-4">
           <ShoppingCart />
         </div>
       </aside>
