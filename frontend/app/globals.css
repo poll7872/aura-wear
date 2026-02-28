@@ -1,68 +1,143 @@
 @import "tailwindcss";
 
 @theme {
-  /* OKLCH Color Palette for Aura Wear */
-  --color-background: oklch(14% 0.022 265); /* Deep, dark blue */
-  --color-foreground: oklch(98% 0.01 90);  /* Warm off-white */
+  /* AuraWear Core Palette - premium sport retail */
+  --color-background: oklch(97.8% 0.004 84);
+  --color-foreground: oklch(19% 0.01 260);
 
-  --color-primary: oklch(65% 0.2 280); /* Vibrant violet */
-  --color-primary-foreground: oklch(100% 0 0); /* Pure white */
+  --color-primary: oklch(58% 0.21 28); /* energetic orange-red */
+  --color-primary-foreground: oklch(99% 0.002 84);
+  --color-secondary: oklch(94.5% 0.006 250);
+  --color-secondary-foreground: oklch(24% 0.01 260);
+  --color-accent: oklch(71% 0.17 72); /* volt amber accent */
+  --color-accent-foreground: oklch(16% 0.012 260);
 
-  --color-secondary: oklch(20% 0.015 265); /* Dark subtle gray-blue */
-  --color-secondary-foreground: oklch(98% 0.01 90);
+  --color-muted: oklch(92.8% 0.008 250);
+  --color-muted-foreground: oklch(49% 0.012 258);
+  --color-border: oklch(88.4% 0.01 252);
+  --color-ring: oklch(58% 0.21 28 / 0.5);
 
-  --color-muted: oklch(25% 0.015 265);
-  --color-muted-foreground: oklch(65% 0.015 265); /* Muted gray-blue text */
+  --color-card: oklch(99.2% 0.002 84);
+  --color-card-foreground: oklch(20.5% 0.01 260);
 
-  --color-border: oklch(25% 0.015 265);
-  --color-ring: oklch(65% 0.2 280 / 0.6); /* Violet ring for focus */
+  /* Semantic feedback colors */
+  --color-constructive: oklch(73% 0.15 152); /* success */
+  --color-constructive-foreground: oklch(20% 0.03 152);
+  --color-destructive: oklch(62% 0.22 28); /* error */
+  --color-destructive-foreground: oklch(99% 0.002 84);
+  --color-warning: oklch(81% 0.16 87);
+  --color-warning-foreground: oklch(27% 0.03 87);
 
-  --color-destructive: oklch(60% 0.22 25); /* Red for destructive actions */
-  --color-destructive-foreground: oklch(98% 0.01 25);
-  --color-constructive: oklch(65% 0.18 145); /* Green for constructive actions */
-  --color-constructive-foreground: oklch(15% 0.05 145);
-  
-  --color-card: oklch(16% 0.02 265);
-  --color-card-foreground: oklch(98% 0.01 90);
+  /* Radius system */
+  --radius-sm: 0.45rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
 
-  /* Radius */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
+  /* Base motion */
+  --aw-transition-fast: 150ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  --aw-transition-base: 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  --aw-transition-slow: 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
 
   /* Animation */
   --animate-aura-glow: aura-glow 3s infinite ease-in-out;
+  --animate-fade-in-up: fade-in-up 0.22s ease-out;
+  --animate-soft-pop: soft-pop 0.2s ease-out;
 
   @keyframes aura-glow {
-    0%, 100% {
-      text-shadow: 0 0 2px theme(colors.primary / 50%), 0 0 10px theme(colors.primary / 30%);
+    0%,
+    100% {
+      text-shadow:
+        0 0 3px color-mix(in oklab, var(--color-primary), transparent 45%),
+        0 0 16px color-mix(in oklab, var(--color-primary), transparent 75%);
     }
     50% {
-      text-shadow: 0 0 5px theme(colors.primary / 70%), 0 0 25px theme(colors.primary / 50%);
+      text-shadow:
+        0 0 6px color-mix(in oklab, var(--color-primary), transparent 30%),
+        0 0 26px color-mix(in oklab, var(--color-primary), transparent 65%);
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes soft-pop {
+    from {
+      transform: scale(0.985);
+      opacity: 0.9;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
     }
   }
 }
 
 @layer base {
+  :root {
+    /* Shadows */
+    --aw-shadow-sm: 0 4px 14px hsl(225 16% 8% / 0.07);
+    --aw-shadow-md: 0 12px 30px hsl(225 16% 8% / 0.12);
+    --aw-shadow-lg: 0 18px 42px hsl(225 16% 8% / 0.16);
+  }
+
   body {
     @apply bg-background text-foreground antialiased;
-    background-image: radial-gradient(circle at top, oklch(100% 0 0 / 2.5%), transparent 40%);
+    background-image:
+      radial-gradient(circle at 14% 0%, oklch(62% 0.18 28 / 0.12), transparent 38%),
+      radial-gradient(circle at 88% 8%, oklch(81% 0.11 85 / 0.17), transparent 40%),
+      linear-gradient(to bottom, oklch(98.7% 0.004 84), oklch(95.6% 0.008 250));
   }
-  
+
   * {
     @apply border-border;
   }
+
+  button,
+  input,
+  select,
+  textarea {
+    transition:
+      color var(--aw-transition-base),
+      background-color var(--aw-transition-base),
+      border-color var(--aw-transition-base),
+      box-shadow var(--aw-transition-base),
+      transform var(--aw-transition-base);
+  }
 }
 
-/* Redefining old variables to map to the new system for compatibility */
-/* This ensures existing components don't break before they are redesigned */
-:root {
-  --aw-bg-deep: theme(colors.background);
-  --aw-bg-mid: theme(colors.secondary);
-  --aw-surface: theme(colors.card);
-  --aw-text-light: theme(colors.foreground);
-  --aw-text-dark: theme(colors.card-foreground);
-  --aw-muted: theme(colors.muted);
-  --aw-accent: theme(colors.primary);
-  --aw-accent-soft: oklch(75% 0.18 280); /* Softer violet for hover effects */
+@layer utilities {
+  .aw-surface {
+    background: color-mix(in oklab, var(--color-card), white 5%);
+    border: 1px solid color-mix(in oklab, var(--color-border), transparent 15%);
+    box-shadow: var(--aw-shadow-sm);
+  }
+
+  .aw-surface-elevated {
+    background: color-mix(in oklab, var(--color-card), white 12%);
+    border: 1px solid color-mix(in oklab, var(--color-border), transparent 10%);
+    box-shadow: var(--aw-shadow-md);
+  }
+
+  .aw-hover-lift {
+    transition: transform var(--aw-transition-base), box-shadow var(--aw-transition-base);
+  }
+
+  .aw-hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--aw-shadow-lg);
+  }
+
+  .aw-focus-ring {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-ring), white 10%);
+  }
 }
