@@ -9,10 +9,11 @@ export default function StoreLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex flex-col h-screen">
+    <div className="relative flex h-screen flex-col overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,_hsl(var(--primary)/0.09),_transparent_40%)]" />
       <MainNav />
-      <main className="flex-grow overflow-y-auto">
-        <div className="pt-10 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <main className="relative z-10 flex-grow overflow-y-auto">
+        <div className="mx-auto max-w-7xl px-4 pb-24 pt-10 sm:px-6 lg:px-8">
           {children}
         </div>
         <Footer />
